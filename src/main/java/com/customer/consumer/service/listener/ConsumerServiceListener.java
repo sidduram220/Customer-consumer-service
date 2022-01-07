@@ -7,7 +7,6 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.customer.consumer.service.model.Customer;
 import com.customer.consumer.service.services.CustomerService;
 import com.customer.consumer.service.util.ObjectMapperUtil;

@@ -1,7 +1,6 @@
 package com.customer.consumer.service.services;
 
 import org.springframework.stereotype.Service;
-
 import com.customer.consumer.service.model.Customer;
 import com.customer.consumer.service.model.CustomerRequest;
 
