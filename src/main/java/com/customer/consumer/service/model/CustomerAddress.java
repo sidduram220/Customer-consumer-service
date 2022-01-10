@@ -1,6 +1,6 @@
 package com.customer.consumer.service.model;
 
-public class Address {
+public class CustomerAddress {
 
 	private String addressLine1;
 	private String addressLine2;

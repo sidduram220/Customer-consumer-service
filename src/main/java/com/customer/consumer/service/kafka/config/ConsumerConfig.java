@@ -2,6 +2,7 @@ package com.customer.consumer.service.kafka.config;
 
 import java.util.HashMap;
 import java.util.Map;
+
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,16 +11,17 @@ import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 import org.springframework.kafka.support.serializer.JsonDeserializer;
-import com.customer.consumer.service.model.Customer;
+
+import com.customer.consumer.service.model.CustomerRequest;
 
 @Configuration
 @EnableKafka
 public class ConsumerConfig {
 
 	@Bean
-	public ConsumerFactory<String, Customer> consumerFactory() {
+	public ConsumerFactory<String, CustomerRequest> consumerFactory() {
 
-		JsonDeserializer<Customer> deserializer = new JsonDeserializer<>(Customer.class);
+		JsonDeserializer<CustomerRequest> deserializer = new JsonDeserializer<>(CustomerRequest.class);
 		deserializer.setRemoveTypeHeaders(false);
 		deserializer.addTrustedPackages("*");
 		deserializer.setUseTypeMapperForKey(true);
@@ -35,8 +37,8 @@ public class ConsumerConfig {
 	}
 
 	@Bean
-	public ConcurrentKafkaListenerContainerFactory<String, Customer> concurrentKafkaListenerContainerFactory() {
-		ConcurrentKafkaListenerContainerFactory<String, Customer> factory = new ConcurrentKafkaListenerContainerFactory<>();
+	public ConcurrentKafkaListenerContainerFactory<String, CustomerRequest> concurrentKafkaListenerContainerFactory() {
+		ConcurrentKafkaListenerContainerFactory<String, CustomerRequest> factory = new ConcurrentKafkaListenerContainerFactory<>();
 		factory.setConsumerFactory(consumerFactory());
 		return factory;
 

@@ -7,9 +7,9 @@ public class CustomerRequest {
 	private String birthDate;
 	private String country;
 	private String countryCode;
-	private Integer mobileNumber;
+	private String mobileNumber;
 	private String email;
-	private Address address;
+	private CustomerAddress address;
 	private String customerStatus;
 
 	public String getCustomerNumber() {
@@ -60,11 +60,11 @@ public class CustomerRequest {
 		this.countryCode = countryCode;
 	}
 
-	public Integer getMobileNumber() {
+	public String getMobileNumber() {
 		return mobileNumber;
 	}
 
-	public void setMobileNumber(Integer mobileNumber) {
+	public void setMobileNumber(String mobileNumber) {
 		this.mobileNumber = mobileNumber;
 	}
 
@@ -76,11 +76,11 @@ public class CustomerRequest {
 		this.email = email;
 	}
 
-	public Address getAddress() {
+	public CustomerAddress getAddress() {
 		return address;
 	}
 
-	public void setAddress(Address address) {
+	public void setAddress(CustomerAddress address) {
 		this.address = address;
 	}
 
