@@ -10,23 +10,19 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "AUDIT_LOG")
 public class AuditLog {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private int id;
 
-	public AuditLog() {
-		// TODO Auto-generated constructor stub
-	}
+  public AuditLog(String customerNumber, String payLoad) {
+    super();
+    this.customerNumber = customerNumber;
+    this.payLoad = payLoad;
+  }
 
-	public AuditLog(String customerNumber, String payLoad) {
-		super();
-		this.customerNumber = customerNumber;
-		this.payLoad = payLoad;
-	}
-
-	@Column
-	private String customerNumber;
-	@Column
-	private String payLoad;
+  @Column
+  private String customerNumber;
+  @Column
+  private String payLoad;
 
 }
