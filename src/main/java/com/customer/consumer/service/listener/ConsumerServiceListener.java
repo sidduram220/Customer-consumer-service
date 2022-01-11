@@ -23,7 +23,7 @@ public class ConsumerServiceListener {
 
   @KafkaListener(groupId = SIDDU1, topics = MYTOPIC,
       containerFactory = "concurrentKafkaListenerContainerFactory")
-  public void name(@Payload CustomerRequest customer) {
+  public void customerRequestListener(@Payload CustomerRequest customer) {
     String payload = ObjectMapperUtil.asJsonString(customer);
     log.info("message received : {}", payload);
     customerService.saveCustomerInfo(customer.getCustomerNumber(), payload);
