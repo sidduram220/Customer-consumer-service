@@ -24,7 +24,7 @@ public class ConsumerConfig {
     deserializer.setUseTypeMapperForKey(true);
     Map<String, Object> configs = new HashMap<>();
     configs.put(org.apache.kafka.clients.consumer.ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,
-        "127.1.0.0:9092");
+        "localhost:9092");
     configs.put(org.apache.kafka.clients.consumer.ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG,
         StringDeserializer.class);
     configs.put(org.apache.kafka.clients.consumer.ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG,
