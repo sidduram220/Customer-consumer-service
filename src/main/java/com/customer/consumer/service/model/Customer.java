@@ -1,16 +1,64 @@
 package com.customer.consumer.service.model;
 
-public class CustomerRequest {
+import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonValue;
+
+public class Customer {
   private String customerNumber;
   private String firstName;
   private String lastName;
-  private String birthDate;
+  @JsonFormat(pattern = "dd-MM-yyyy")
+  private Date birthDate;
   private String country;
   private String countryCode;
   private String mobileNumber;
   private String email;
   private Address address;
-  private String customerStatus;
+
+  /**
+   * customer status
+   */
+  public enum CustomerStatusEnum {
+    O("Open"),
+
+    C("Close"),
+
+    S("Suspended"),
+
+    R("Restored");
+
+    private String value;
+
+    CustomerStatusEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static CustomerStatusEnum fromValue(String value) {
+      for (CustomerStatusEnum b : CustomerStatusEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  @JsonProperty("customerStatus")
+  private CustomerStatusEnum customerStatus;
 
   public String getCustomerNumber() {
     return customerNumber;
@@ -36,11 +84,11 @@ public class CustomerRequest {
     this.lastName = lastName;
   }
 
-  public String getBirthDate() {
+  public Date getBirthDate() {
     return birthDate;
   }
 
-  public void setBirthDate(String birthDate) {
+  public void setBirthDate(Date birthDate) {
     this.birthDate = birthDate;
   }
 
@@ -84,11 +132,11 @@ public class CustomerRequest {
     this.address = address;
   }
 
-  public String getCustomerStatus() {
+  public CustomerStatusEnum getCustomerStatus() {
     return customerStatus;
   }
 
-  public void setCustomerStatus(String customerStatus) {
+  public void setCustomerStatus(CustomerStatusEnum customerStatus) {
     this.customerStatus = customerStatus;
   }
 
