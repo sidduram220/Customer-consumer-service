@@ -4,7 +4,6 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import java.util.Date;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -12,16 +11,16 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import com.customer.consumer.service.model.Address;
 import com.customer.consumer.service.model.Customer;
 import com.customer.consumer.service.model.Customer.CustomerStatusEnum;
-import com.customer.consumer.service.services.CustomerService;
+import com.customer.consumer.service.service.CustomerService;
 
 @SpringBootTest
 class CustomerServiceListenerTest {
 
   @Autowired
-  ConsumerServiceListener consumerServiceListener;
+  private ConsumerServiceListener consumerServiceListener;
 
   @MockBean
-  CustomerService customerService;
+  private CustomerService customerService;
 
   @Test
   void customerRequestListenerTest() {
@@ -29,12 +28,6 @@ class CustomerServiceListenerTest {
     consumerServiceListener.customerRequestListener(customer);
     verify(customerService, times(1)).saveCustomerInfo(anyString(), anyString());
 
-  }
-
-  @Test
-  void customerRequestListenerTestWithOutCustomer() {
-    Assertions.assertThrows(NullPointerException.class,
-        () -> consumerServiceListener.customerRequestListener(null));
   }
 
   private Customer getCustomer() {

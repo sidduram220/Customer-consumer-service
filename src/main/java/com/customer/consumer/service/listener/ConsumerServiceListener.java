@@ -9,23 +9,23 @@ import org.springframework.stereotype.Service;
 import com.customer.consumer.service.converter.CustomerRequestConverter;
 import com.customer.consumer.service.model.Customer;
 import com.customer.consumer.service.model.CustomerRequest;
-import com.customer.consumer.service.services.CustomerService;
+import com.customer.consumer.service.service.CustomerService;
 import com.customer.consumer.service.util.ObjectMapperUtil;
 
 @Service
 public class ConsumerServiceListener {
 
-  Logger log = LoggerFactory.getLogger(ConsumerServiceListener.class);
+  private static final Logger log = LoggerFactory.getLogger(ConsumerServiceListener.class);
 
   private static final String MYTOPIC = "Mytopic1";
   private static final String GROUPID = "siddu1";
   private static final String containerFactory = "concurrentKafkaListenerContainerFactory";
 
   @Autowired
-  CustomerService customerService;
+  private CustomerService customerService;
 
   @Autowired
-  CustomerRequestConverter customerRequestConverter;
+  private CustomerRequestConverter customerRequestConverter;
 
   @KafkaListener(groupId = GROUPID, topics = MYTOPIC, containerFactory = containerFactory)
   public void customerRequestListener(@Payload Customer customer) {
@@ -34,5 +34,4 @@ public class ConsumerServiceListener {
     log.info("Customer request received : {}", customerJsonRequest);
     customerService.saveCustomerInfo(customerRequest.getCustomerNumber(), customerJsonRequest);
   }
-
 }

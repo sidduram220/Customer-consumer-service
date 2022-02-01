@@ -1,4 +1,4 @@
-package com.customer.consumer.service.services.impl;
+package com.customer.consumer.service.service.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -6,15 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.customer.consumer.service.entity.AuditLog;
 import com.customer.consumer.service.repository.CustomerRepository;
-import com.customer.consumer.service.services.CustomerService;
+import com.customer.consumer.service.service.CustomerService;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
-  Logger log = LoggerFactory.getLogger(CustomerServiceImpl.class);
+  private static final Logger log = LoggerFactory.getLogger(CustomerServiceImpl.class);
 
   @Autowired
-  CustomerRepository customerRepository;
+  private CustomerRepository customerRepository;
 
   @Override
   public void saveCustomerInfo(String customerNumber, String payload) {

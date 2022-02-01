@@ -18,10 +18,10 @@ import com.customer.consumer.service.repository.CustomerRepository;
 public class CustomerServiceListenerIntegrationTest {
 
   @Autowired
-  ConsumerServiceListener consumerServiceListener;
+  private ConsumerServiceListener consumerServiceListener;
 
   @MockBean
-  CustomerRepository customerRepository;
+  private CustomerRepository customerRepository;
 
   @Test
   void customerRequestListenerTest() {

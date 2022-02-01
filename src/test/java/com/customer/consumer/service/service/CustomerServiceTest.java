@@ -1,4 +1,4 @@
-package com.customer.consumer.service.services;
+package com.customer.consumer.service.service;
 
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -20,10 +20,10 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 class CustomerServiceTest {
 
   @Autowired
-  CustomerService customerService;
+  private CustomerService customerService;
 
   @MockBean
-  CustomerRepository customerRepository;
+  private CustomerRepository customerRepository;
 
   @Test
   void saveCustomerInfoTest() throws JsonProcessingException {

@@ -7,7 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class ObjectMapperUtil {
 
-  static Logger log = LoggerFactory.getLogger(ObjectMapperUtil.class);
+  private static final Logger log = LoggerFactory.getLogger(ObjectMapperUtil.class);
 
 
   private ObjectMapperUtil() {

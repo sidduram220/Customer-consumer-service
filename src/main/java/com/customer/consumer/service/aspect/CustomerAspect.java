@@ -14,13 +14,13 @@ import com.customer.consumer.service.repository.ErrorLogRepository;
 @Aspect
 public class CustomerAspect {
 
-  Logger log = LoggerFactory.getLogger(CustomerAspect.class);
+  private static final Logger log = LoggerFactory.getLogger(CustomerAspect.class);
 
   @Autowired
-  ErrorLogRepository errorLogRepository;
+  private ErrorLogRepository errorLogRepository;
 
   @AfterThrowing(
-      value = "execution(* com.customer.consumer.service.services.CustomerService.saveCustomerInfo(..)) && args(customerNumber,payload))",
+      value = "execution(* com.customer.consumer.service.service.CustomerService.saveCustomerInfo(..)) && args(customerNumber,payload))",
       throwing = "exception")
   public void afterThrowingException(JoinPoint joinPoint, RuntimeException exception,
       String customerNumber, String payload) {
